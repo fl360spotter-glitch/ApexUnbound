@@ -1,0 +1,1082 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080B10">
+<title>APEX UNBOUND — The Road Ends. Your Journey Doesn't.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #092440;
+  --orange: #E78345;
+  --silver: #D7DCE3;
+  --black: #080B10;
+  --white: #FFFFFF;
+  --muted: #8995A4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Chakra Petch', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+.section {
+  padding: 110px 0;
+}
+
+.section-tag {
+  color: var(--orange);
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-family: 'Teko', sans-serif;
+  font-size: clamp(48px, 7vw, 76px);
+  line-height: .95;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.section-description {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 650px;
+  font-size: 15px;
+}
+
+/* NAVIGATION */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(8,11,16,.82);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  transition: .3s;
+}
+
+nav {
+  height: 78px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Teko', sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--orange);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--silver);
+  transition: color .3s;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* BUTTONS */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 27px;
+  background: var(--orange);
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid var(--orange);
+  transition: transform .3s, background .3s, box-shadow .3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  background: #f49a5d;
+  box-shadow: 0 10px 30px rgba(231,131,69,.22);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,.35);
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* IMAGE PLACEHOLDERS */
+
+.image-placeholder {
+  position: relative;
+  min-height: 280px;
+  width: 100%;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(231,131,69,.15), transparent 65%),
+    linear-gradient(135deg, #142b40, #0b111b 65%, #1a2029);
+  border: 1px solid rgba(215,220,227,.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color .4s;
+} /* APEX IMAGE DISPLAY FIX */
+.image-placeholder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.intro-art .image-placeholder {
+  height: 380px;
+  min-height: 0;
+}
+
+.image-placeholder:hover {
+  border-color: var(--orange);
+}
+
+.image-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.035), transparent 70%);
+  transform: translateX(-100%);
+  transition: transform .8s;
+}
+
+.image-placeholder:hover::before {
+  transform: translateX(100%);
+}
+
+.placeholder-content {
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.placeholder-icon {
+  font-size: 35px;
+  margin-bottom: 12px;
+  display: block;
+  filter: grayscale(1);
+  opacity: .8;
+}
+
+.placeholder-content strong {
+  display: block;
+  font-family: 'Teko', sans-serif;
+  font-size: 27px;
+  letter-spacing: 1px;
+  color: var(--silver);
+  text-transform: uppercase;
+}
+
+.placeholder-content small {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 75% 75%, rgba(231,131,69,.18), transparent 40%),
+    linear-gradient(115deg, #080B10 10%, #092440 100%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8,11,16,.35), transparent),
+              linear-gradient(0deg, var(--black), transparent 35%);
+  pointer-events: none;
+}
+
+.hero-placeholder {
+  position: absolute;
+  inset: 0;
+  opacity: .65;
+  min-height: 100%;
+  border: none;
+  background: linear-gradient(135deg, #102b43, #111820 60%, #542d25);
+}
+
+.hero-placeholder .placeholder-content {
+  opacity: .65;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 100px;
+  max-width: 850px;
+}
+
+.hero-eyebrow {
+  color: var(--orange);
+  font-size: 12px;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  animation: fadeUp .8s both;
+}
+
+.hero h1 {
+  font-family: 'Teko', sans-serif;
+  font-size: clamp(80px, 15vw, 170px);
+  line-height: .72;
+  letter-spacing: -2px;
+  animation: fadeUp 1s .1s both;
+}
+
+.hero h1 span {
+  color: var(--orange);
+}
+
+.hero-tagline {
+  margin-top: 35px;
+  color: var(--silver);
+  font-size: clamp(14px, 2vw, 19px);
+  letter-spacing: 2px;
+  animation: fadeUp 1s .2s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+  animation: fadeUp 1s .3s both;
+}
+
+.hero-bottom {
+  position: absolute;
+  z-index: 2;
+  bottom: 35px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* INTRO */
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.intro-art {
+  min-height: 370px;
+}
+
+.intro-art .image-placeholder {
+  height: 100%;
+}
+
+/* FEATURE SECTIONS */
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 65px;
+}
+
+.feature-row.reverse .feature-image {
+  order: 2;
+}
+
+.feature-image {
+  overflow: hidden;
+}
+
+.feature-image .image-placeholder {
+  height: 350px;
+  min-height: 0;
+  padding: 0;
+  transition: transform .5s;
+}
+
+.feature-image:hover .image-placeholder {
+  transform: scale(1.025);
+}
+
+.feature-copy h3 {
+  font-family: 'Teko', sans-serif;
+  font-size: 50px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.feature-copy p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+/* CARDS */
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 45px;
+}
+
+.feature-card {
+  background: #101720;
+  border: 1px solid rgba(255,255,255,.07);
+  padding: 30px;
+  transition: transform .3s, border-color .3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--orange);
+}
+
+.feature-card h3 {
+  font-family: 'Teko', sans-serif;
+  font-size: 35px;
+  text-transform: uppercase;
+  margin: 15px 0 5px;
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* LAUNCHER */
+
+.launcher {
+  background: linear-gradient(115deg, #092440, #101820 75%);
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.launcher-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.coming-soon {
+  display: inline-block;
+  color: var(--orange);
+  border: 1px solid rgba(231,131,69,.5);
+  padding: 8px 13px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin: 25px 0;
+}
+
+/* ABOUT */
+
+.about-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-top: 40px;
+  padding: 35px;
+  background: #101720;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.about-card .image-placeholder {
+  min-height: 300px;
+}
+
+/* FOOTER */
+
+footer {
+  background: #05070b;
+  padding: 55px 0 25px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-bottom: 35px;
+}
+
+.footer-bottom {
+  padding-top: 25px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+  .nav-links {
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background: #080B10;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 25px 5%;
+    gap: 22px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-download {
+    display: none;
+  }
+
+  .intro-grid,
+  .feature-row,
+  .launcher-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .feature-row.reverse .feature-image {
+    order: 0;
+  }
+
+  .about-card {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .hero h1 {
+    font-size: clamp(75px, 17vw, 125px);
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .hero-bottom {
+    font-size: 8px;
+  }
+}
+
+@media(max-width: 500px) {
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .hero-bottom span:last-child {
+    display: none;
+  }
+
+  .about-card {
+    padding: 20px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* TWO-MEMBER TEAM */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 42px;
+}
+
+.team-card {
+  min-width: 0;
+  overflow: hidden;
+  background: #101720;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .35s ease, border-color .35s ease,
+              box-shadow .35s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--orange);
+  box-shadow: 0 18px 45px rgba(0,0,0,.22);
+}
+
+.team-portrait {
+  min-height: 0;
+  height: 320px;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.team-portrait .placeholder-content {
+  width: 100%;
+}
+
+.team-info {
+  padding: 28px 30px 32px;
+}
+
+.team-info .section-tag {
+  margin-bottom: 8px;
+}
+
+.team-info h3 {
+  font-family: 'Teko', sans-serif;
+  font-size: 43px;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.team-info p:last-child {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.team-footer {
+  margin-top: 35px;
+  color: var(--silver);
+  opacity: .7;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+@media(max-width: 650px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-portrait {
+    height: 280px;
+  }
+
+  .team-info {
+    padding: 24px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header id="header">
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">APEX<span>.</span></a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#game">The Game</a>
+        <a href="#world">World</a>
+        <a href="#cars">Cars</a>
+        <a href="#launcher">Launcher</a>
+        <a href="#about">About</a>
+      </div>
+
+      <a href="#launcher" class="btn nav-download">Get Launcher</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. HERO / IMAGE PLACEHOLDER 1 -->
+
+<section class="hero" id="home">
+
+  <div class="image-placeholder hero-placeholder"
+     data-image="01-main-hero">
+  <img src="images/01-main-hero.png"
+       alt="Porsche 911 GT3 RS on a beach">
+</div>
+
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow">AN OPEN-WORLD DRIVING EXPERIENCE</p>
+
+      <h1>APEX<br><span>UNBOUND.</span></h1>
+
+      <p class="hero-tagline">
+        The Road Ends. Your Journey Doesn't.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#game" class="btn">Explore the Game ↗</a>
+        <a href="#launcher" class="btn btn-outline">NEXUS Launcher</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <span>Freedom · Adventure · Discovery</span>
+    <span>Scroll to explore ↓</span>
+  </div>
+</section>
+
+<!-- 2. INTRODUCTION -->
+
+<section class="section" id="game">
+  <div class="container intro-grid">
+
+    <div class="reveal">
+      <p class="section-tag">01 / THE EXPERIENCE</p>
+      <h2 class="section-title">MORE THAN<br>A RACE.</h2>
+      <p class="section-description">
+        APEX UNBOUND is an open-world driving and racing game
+        imagined for car enthusiasts and explorers. Discover
+        different cars, explore a vast world and create your
+        own journey on the road.
+      </p>
+      <br>
+      <a href="#world" class="btn btn-outline">Discover More ↗</a>
+    </div>
+
+    <div class="image-placeholder">
+  <img src="images/02-introduction.png"
+       alt="Pagani Huayra on a mountain road">
+</div>
+
+  </div>
+</section>
+
+<!-- 3. OPEN WORLD / IMAGE PLACEHOLDER 2 -->
+
+<section class="section" id="world">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">02 / OPEN WORLD</p>
+      <h2 class="section-title">THE WORLD IS YOURS.</h2>
+      <p class="section-description">
+        From winding mountain roads to city streets and
+        scenic highways, imagine a world where the journey
+        matters as much as the destination.
+      </p>
+    </div>
+
+    <div class="image-placeholder" data-image="02-open-world">
+  <img src="images/03-open-world.png"
+       alt="Expansive APEX UNBOUND open world">
+</div>
+
+      <div class="feature-copy reveal">
+        <p class="section-tag">EXPLORE WITHOUT LIMITS</p>
+        <h3>FIND YOUR OWN ROAD.</h3>
+        <p>
+          Discover different environments, hidden locations
+          and roads waiting to be explored. Drive at your own
+          pace and decide where your journey takes you.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- 4. CAR COLLECTION / IMAGE PLACEHOLDER 3 -->
+
+<section class="section" id="cars">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">03 / THE MACHINES</p>
+      <h2 class="section-title">EVERY CAR HAS A STORY.</h2>
+      <p class="section-description">
+        A world of automotive variety, from iconic classics
+        to modern performance machines.
+      </p>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-image reveal">
+        <div class="image-placeholder" data-image="03-car-collection">
+          <img src="images/04-car-collection.png"
+               alt="APEX UNBOUND car collection">
+        </div>
+      </div>
+
+      <div class="feature-copy reveal">
+        <p class="section-tag">YOUR GARAGE</p>
+        <h3>CHOOSE YOUR MACHINE.</h3>
+        <p>
+          Discover a diverse collection of cars and find
+          the machines that match your driving style.
+          Every drive should feel like your own.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DRIVING / IMAGE PLACEHOLDER 4 -->
+
+<section class="section" id="driving">
+  <div class="container">
+    <div class="feature-row">
+      <div class="feature-image reveal">
+        <div class="image-placeholder" data-image="04-driving">
+  <img src="images/05-driving.png"
+       alt="First-person BMW M4 driving experience">
+</div>
+      </div>
+
+      <div class="feature-copy reveal">
+        <p class="section-tag">04 / THE DRIVE</p>
+        <h3>FEEL THE ROAD.</h3>
+        <p>
+          Whether you're exploring the open world or
+          taking on a race, APEX UNBOUND is built around
+          the enjoyment of driving.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. MULTIPLAYER / IMAGE PLACEHOLDER 5 -->
+
+<section class="section" id="multiplayer">
+  <div class="container">
+    <div class="feature-row reverse">
+      <div class="feature-image reveal">
+        <div class="image-placeholder" data-image="05-multiplayer">
+  <img src="images/06-multiplayer.png"
+       alt="Three cars cruising together in APEX UNBOUND">
+</div>
+      </div>
+
+      <div class="feature-copy reveal">
+        <p class="section-tag">05 / TOGETHER</p>
+        <h3>THE ROAD IS BETTER TOGETHER.</h3>
+        <p>
+          Meet up with friends, explore together and
+          create memorable driving experiences.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FEATURE CARDS -->
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-tag">06 / THE PHILOSOPHY</p>
+      <h2 class="section-title">BUILT AROUND FREEDOM.</h2>
+    </div>
+
+    <div class="feature-cards">
+      <article class="feature-card reveal">
+        <span class="section-tag">01</span>
+        <h3>YOUR WORLD</h3>
+        <p>Explore a world designed around discovery and freedom.</p>
+      </article>
+
+      <article class="feature-card reveal">
+        <span class="section-tag">02</span>
+        <h3>YOUR CARS</h3>
+        <p>Discover automotive variety and find your favourite drive.</p>
+      </article>
+
+      <article class="feature-card reveal">
+        <span class="section-tag">03</span>
+        <h3>YOUR JOURNEY</h3>
+        <p>Choose how you explore, race and enjoy the road.</p>
+      </article>
+
+      <article class="feature-card reveal">
+        <span class="section-tag">04</span>
+        <h3>YOUR PEOPLE</h3>
+        <p>Share the experience and explore with your friends.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 8. NEXUS LAUNCHER / IMAGE PLACEHOLDER 6 -->
+
+<section class="section launcher" id="launcher">
+  <div class="container launcher-grid">
+
+    <div class="reveal">
+      <p class="section-tag">07 / THE HOME OF APEX</p>
+      <h2 class="section-title">MEET NEXUS.</h2>
+      <p class="section-description">
+        NEXUS Launcher is planned to be the home of
+        APEX UNBOUND. A dedicated place to access and
+        launch your driving experience.
+      </p>
+
+      <span class="coming-soon">COMING SOON</span>
+      <br>
+      <button class="btn" disabled
+        style="opacity:.55;cursor:not-allowed;">
+        DOWNLOAD UNAVAILABLE
+      </button>
+    </div>
+
+    <div class="reveal">
+      <div class="image-placeholder" data-image="06-nexus-launcher">
+  <img src="images/07-nexus-launcher.png"
+       alt="NEXUS Launcher interface for APEX UNBOUND">
+</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#home" class="logo">APEX<span>.</span></a>
+        <p class="section-description" style="font-size:12px;">
+          The Road Ends. Your Journey Doesn't.
+        </p>
+      </div>
+
+      <div>
+        <p class="section-tag">EXPLORE</p>
+        <p><a href="#game">The Game</a></p>
+        <p><a href="#world">Open World</a></p>
+        <p><a href="#cars">Cars</a></p>
+        <p><a href="#launcher">NEXUS Launcher</a></p>
+      </div>
+
+      <div>
+        <p class="section-tag">PROJECT</p>
+        <p><a href="#about">About the Team</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> APEX UNBOUND. All rights reserved.</span>
+      <span>THE ROAD ENDS. YOUR JOURNEY DOESN'T.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// MOBILE MENU
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", isOpen);
+  menuToggle.textContent = isOpen ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.textContent = "☰";
+  });
+});
+
+// SCROLL REVEAL ANIMATIONS
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add("visible"));
+}
+
+// SUBTLE HERO PARALLAX
+
+const hero = document.querySelector(".hero");
+const heroPlaceholder = document.querySelector(".hero-placeholder");
+
+const reduceMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (!reduceMotion) {
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      heroPlaceholder.style.transform =
+        `translateY(${scrollY * 0.22}px)`;
+    }
+  }, { passive: true });
+}
+
+// FOOTER YEAR
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// HEADER SCROLL EFFECT
+
+window.addEventListener("scroll", () => {
+  document.getElementById("header").style.background =
+    window.scrollY > 40
+      ? "rgba(8,11,16,.96)"
+      : "rgba(8,11,16,.82)";
+}, { passive: true });
+</script>
+
+</body>
+</html>
